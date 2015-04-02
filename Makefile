@@ -6,6 +6,8 @@ default: $(TARGET)
 
 all: default
 
+CFLAGS += -Wall -Werror
+
 OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
 HEADERS = $(wildcard *.h)
 

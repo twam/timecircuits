@@ -1,4 +1,4 @@
-TARGET = bttf
+TARGET = timecircuits
 
 .PHONY: default all clean
 

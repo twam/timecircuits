@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
 					display_present = 1;
 				}
 
-				if (options_departed_time) {
+				if (options_departed_time_valid) {
 					time_departed = options_departed_time;
 					if (options_relative)
 						time_departed += time_now;

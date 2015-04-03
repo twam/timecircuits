@@ -3,14 +3,13 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <getopt.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
 #include <linux/types.h>
 #include <linux/spi/spidev.h>
 
 static const char *device = "/dev/spidev0.0";
-static uint8_t spi_mode = 0;
+//static uint8_t spi_mode = 0;
 static uint8_t spi_bits = 8;
 static uint32_t spi_speed = 500e3;
 static uint16_t spi_delay = 0;

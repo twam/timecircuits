@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 
 	spi_init();
 
-	while (options_loop) {
+	do {
 		switch (options_mode) {
 			case MODE_DEFAULT: {
 				struct tm tm_destination;
@@ -104,7 +104,8 @@ int main(int argc, char *argv[])
 				test_run(options_test_param);
 			break;
 		}
-	}
+	} while (options_loop);
+
 
 	spi_exit();
 

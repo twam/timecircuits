@@ -54,8 +54,8 @@ void test_run(char* param)
 	} else if (strncmp(param, "chip-", 5) == 0) {
 		test_chip(strtol(param+5, NULL, 0), 0xFFFF);
 	} else if (strcmp(param, "loop-pattern") == 0) {
+		uint16_t pattern = 1;
 		while (1) {
-			uint16_t pattern = 1;
 			test_pattern(pattern);
 			pattern <<= 1;
 			if (pattern == 0)
@@ -63,8 +63,8 @@ void test_run(char* param)
 			usleep(500e3);
 		}
 	} else if (strcmp(param, "loop-chip") == 0) {
+		size_t chip = 0;
 		while (1) {
-			size_t chip = 0;
 			test_chip(chip, 0xFFFF);
 			chip++;
 			if (chip == CHIPS_TOTAL)

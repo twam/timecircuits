@@ -3,11 +3,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+#include <unistd.h>
 
 #include "display.h"
 #include "options.h"
 #include "spi.h"
 #include "test.h"
+#include "gpio.h"
 
 #define COLOR_RESET "\e[0m"
 #define COLOR_BOLDWHITE "\e[1m"
@@ -38,6 +40,20 @@ int main(int argc, char *argv[])
 	snprintf(buf, CHIPS_TOTAL+1, "OBEN     OBENMITTE   MITTEUNTEN   UNTEN");
 
 	options_parse(argc, argv);
+
+	if (gpio_export(BLANK_GPIO)) {
+		fprintf(stderr, "gpio_export failed!\n");
+	}
+
+	usleep(100e3);
+
+	if (gpio_direction(BLANK_GPIO, GPIO_OUT)) {
+		fprintf(stderr, "gpio_direction failed!\n");
+	}
+
+	if (gpio_out(BLANK_GPIO, 0)) {
+		fprintf(stderr, "gpio_out failed!\n");
+	}
 
 	spi_init();
 
@@ -106,8 +122,11 @@ int main(int argc, char *argv[])
 		}
 	} while (options_loop);
 
-
 	spi_exit();
+
+	// if (gpio_unexport(BLANK_GPIO)) {
+	// 	fprintf(stderr, "gpio_unexport failed!\n");
+	// }
 
 	return ret;
 }

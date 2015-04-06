@@ -5,6 +5,8 @@
 #include <stddef.h>
 #include <time.h>
 
+#define BLANK_GPIO				18
+
 #define	CHIPS_PER_MODULE		14
 #define CHARACTER_SEGMENTS_PER_MODULE	13
 #define MODULES				3

@@ -61,7 +61,7 @@ void time_to_display_data(uint16_t* display_data, int display, struct tm* tm, in
 	size_t seconds_chip_pos = (CHIPS_TOTAL - 1) - ((MODULES - 1) - display) * CHIPS_PER_MODULE - LED_CHIP;
 
 	if (!hour24) {
-		display_data[seconds_chip_pos] |= (tm->tm_hour < 12) ? LED_PM : LED_AM;
+		display_data[seconds_chip_pos] |= (tm->tm_hour < 12) ? LED_AM : LED_PM;
 	}
 
 	if ((seconds) && (tm->tm_sec % 2)) {

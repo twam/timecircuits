@@ -27,7 +27,7 @@ void test_chip(size_t chip, uint16_t pattern)
 	memset(display_data, 0, CHIPS_TOTAL*sizeof(uint16_t));
 	display_data[chip] = pattern;
 
-	printf("Testing chip %2u (Pattern 0x%04X)\n", chip, pattern);
+	printf("Testing chip %2zu (Pattern 0x%04X)\n", chip, pattern);
 	spi_transfer(display_data, CHIPS_TOTAL);
 }
 
@@ -76,7 +76,7 @@ void test_run(char* param)
 
 		if (strlen(param) < 7) {
 			fprintf(stderr, "No character given.\n");
-		} else if (param[6] >= CHARSET_SIZE) {
+		} else if ((uint8_t)param[6] >= CHARSET_SIZE) {
 			fprintf(stderr, "Character '%c' has an ASCII code %u that is larger than charset size.\n", param[6], param[6]);
 		} else {
 			pattern = charset[(size_t)param[6]];

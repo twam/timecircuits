@@ -40,8 +40,8 @@ void spi_transfer(uint16_t *buf, size_t len)
 	int ret;
 
 	struct spi_ioc_transfer tr = {
-		.tx_buf = (uint32_t)buf,
-		.rx_buf = (uint32_t)NULL,
+		.tx_buf = (uint64_t)buf,
+		.rx_buf = (uint64_t)NULL,
 		.len = len*sizeof(uint16_t),
 		.delay_usecs = spi_delay,
 		.speed_hz = spi_speed,

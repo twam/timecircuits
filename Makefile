@@ -8,7 +8,7 @@ all: default
 
 CFLAGS += -Wall -Werror -D_GNU_SOURCE
 
-OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
+OBJECTS = $(patsubst %.c,%.o,$(wildcard *.c))
 HEADERS = $(wildcard *.h)
 
 %.o: %.c $(HEADERS)
